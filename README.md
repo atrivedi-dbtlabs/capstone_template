@@ -22,13 +22,16 @@ By the end of the capstone, you should have:
 
 ## Quickstart
 
-### 1) Clone this repo
+### 1) Create a repo from this template
+Follow [these instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) to create your own repo from this template.
+
+### 2) Clone that repo locally using VS Code
 ```
 git clone <YOUR_REPO_URL>
 cd <YOUR_REPO_NAME>
 ```
 
-### 2) Confirm your dbt profile name matches `dbt_project.yml` (important)
+### 3) Confirm your dbt profile name matches `dbt_project.yml` (important)
 This project’s `dbt_project.yml` includes a `profile:` value (for example, `default`). **That value must match the profile name you have configured for BigQuery dev credentials in your `profiles.yml`.**
 
 - If your `dbt_project.yml` says `profile: default`, then your `profiles.yml` must have a top-level profile named `default:`.
@@ -39,7 +42,7 @@ Typical locations:
 
 If the names do not match, dbt will fail with a “profile not found” style error.
 
-### 3) Seed the curated source data (raw layer)
+### 4) Seed the curated source data (raw layer)
 This starter uses dbt **seeds** as the “raw” tables for the project.
 
 Run: `dbt seed`
