@@ -3,18 +3,18 @@ This template repository is a **starting point** for an end-to-end analytics eng
 
 ## What you’re building
 By the end of the capstone, you should have:
-- A clear analytics question (1 primary, 2–4 supporting)
+- A specific, relevant analytics question (or small set) stated up front; perhaps opting for 1 primary, 2–4 supporting questions
 - A dbt project that runs end-to-end on **BigQuery**
-- At least one **`dim_*`** and/or **`fct_*`** model that answers your questions
-- 2–4 tests (at minimum `not_null` and `unique` on a key, plus one business-logic test)
-- Docs and descriptions for key models and columns
-- A short write-up with 1–2 insights backed by your outputs
+- At least one **`dim_*`** and/or **`fct_*`** model that clearly answers the stated question(s)
+- 2–4 tests (at minimum `not_null` and `unique` on primary keys, plus one business-logic test)
+- Descriptions for key models and columns so someone new can easily follow the work
+- A short write-up in the README, with at least one insight stated and supported by data evidence and at least one realistic next step that follows from the insight(s). Include sections that say `Insights: ` and `Next Steps: `.
 
 ---
 
 ## Prerequisites
 - BigQuery project + dataset you can write to
-- dbt (Fusion + VS Code extension, or dbt Core) installed and working
+- dbt (Fusion + VS Code extension) installed and working
 - Git installed and a GitHub account
 - A working BigQuery connection configured in `profiles.yml`
 
@@ -26,6 +26,7 @@ By the end of the capstone, you should have:
 Follow [these instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) to create your own repo from this template.
 
 ### 2) Clone that repo locally using VS Code
+Follow [these instructions](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#cloning-your-forked-repository) to clone your repo for local development in VS Code.
 ```
 git clone <YOUR_REPO_URL>
 cd <YOUR_REPO_NAME>
@@ -34,7 +35,7 @@ cd <YOUR_REPO_NAME>
 ### 3) Confirm your dbt profile name matches `dbt_project.yml` (important)
 This project’s `dbt_project.yml` includes a `profile:` value (for example, `default`). **That value must match the profile name you have configured for BigQuery dev credentials in your `profiles.yml`.**
 
-- If your `dbt_project.yml` says `profile: default`, then your `profiles.yml` must have a top-level profile named `default:`.
+- If your `dbt_project.yml` says `profile: default`, then your `profiles.yml` must have a top-level profile named `default:`. In this template repo, the `dbt_project.yml` says `profile: capstone_template`, so make sure you have a top-level profile named `capstone_template` in your `profiles.yml` file.
 
 Typical locations:
 - In the hidden `.dbt` folder: `~/.dbt/profiles.yml`
@@ -71,6 +72,7 @@ Recommended build-out:
 - Make sure your BigQuery credential (typically the locally saved JSON file) has permission to:
   - create tables/views
   - create and write to datasets
+  It is easiest to just give the service account `Owner` permissions
 - Be explicit about your target dataset (schema) in `profiles.yml` so you can easily find your outputs.
 - If you switch GCP projects or datasets, rerun `dbt debug` to confirm everything is wired correctly.
 
@@ -92,7 +94,7 @@ dbt ls
 - [ ] Added descriptions to key models and columns
 - [ ] Documented metric definitions and entity grain (especially facts)
 - [ ] Ran `dbt build` successfully with a clean output
-- [ ] README includes: setup, how to run, what questions are answered, and 1–2 insights backed by the model output, and any next steps.
+- [ ] README includes: At least one insight stated and supported by data evidence (numbers, comparison, trend, segment, etc.) and at least one realistic next step that follows from the insight(s)
 
 ---
 
